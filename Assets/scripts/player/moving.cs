@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(Rigidbody))]
 public class moving : MonoBehaviour
 {
     //gives the speed
     public float speed = 8f;
+
+    Vector3 lastGoodPos;
 
     //gives begin positions
     public float xPosition = 0f;
@@ -36,8 +39,18 @@ public class moving : MonoBehaviour
         isGrounded = true;
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        //if space is pressed and the plaeyr is on the ground you can jump 
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
     {
         //makes it so the player can jump in game
         Moving();
@@ -82,12 +95,7 @@ public class moving : MonoBehaviour
         {
             transform.Translate(Vector3.back * speed * Time.deltaTime);
         }
-        //if space is pressed and the plaeyr is on the ground you can jump 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
-            isGrounded = false;
-        }
+
     }
 
 
@@ -113,4 +121,7 @@ public class moving : MonoBehaviour
             isGrounded = false;
         }
     }
+
+
+
 }

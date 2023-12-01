@@ -10,11 +10,12 @@ public class Enemyhealth : MonoBehaviour
     private int NPCHealth;
     private int NPCHealthMax = 3;
     public GameObject Explosion;
-    
+    private Animation anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animation>();
         health = setHealth;
         NPCHealth = NPCHealthMax;
     }
@@ -34,10 +35,16 @@ public class Enemyhealth : MonoBehaviour
             //Instantiate(Explosion, new Vector3(0,2,0), Quaternion.identity);
             //DontDestroyOnLoad(Instantiate(Explosion, new Vector3(0, 2, 0), Quaternion.identity));
             //destroys enemy when dead
-            
-            Destroy(gameObject);
+            Animator anim = GetComponent<Animator>();
+            anim.SetTrigger("Die");
+            StartCoroutine(Destruction());
             Debug.Log(health);
-        }else{
+
+        }
+        else
+        {
+            Animator anim = GetComponent<Animator>();
+            anim.SetTrigger("Hit");
             //health decreases by 1 and shows me how much the health is
             health--;
             Debug.Log(health);
@@ -58,5 +65,13 @@ public class Enemyhealth : MonoBehaviour
             NPCHealth--;
             Debug.Log(NPCHealth);
         }
+    }
+
+    IEnumerator Destruction()
+    {
+
+        yield return new WaitForSeconds(1.4f);
+        Destroy(gameObject);
+
     }
 }
