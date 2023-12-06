@@ -53,8 +53,16 @@ public class WeaponSwitch : MonoBehaviour
         {
             newSelectedWeapon = 2;
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 4)
+        {
+            newSelectedWeapon = 3;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 5)
+        {
+            newSelectedWeapon = 4;
+        }
 
-        if(newSelectedWeapon != selectedWeapon)
+        if (newSelectedWeapon != selectedWeapon)
         {
             selectWeapon();
         }

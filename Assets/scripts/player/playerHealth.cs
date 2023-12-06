@@ -6,6 +6,7 @@ public class playerHealth : MonoBehaviour
 {
     public int setHealth = 50;
     private int health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +24,14 @@ public class playerHealth : MonoBehaviour
         if (health <= 0)
         {
             //destroys Player when dead
-            Destroy(gameObject);
+            //Destroy(gameObject);
             Debug.Log(health);
         }
         else
         {
             //health decreases by 1 and shows me how much the health is
             health--;
-            Debug.Log(health);
+            Debug.Log(health + "Goddamn you fuckin' assholes");
         }
     }
 }

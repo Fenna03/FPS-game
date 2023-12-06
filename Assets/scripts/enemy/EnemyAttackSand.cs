@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.RendererUtils;
 
-public class enemyAttack : MonoBehaviour
+public class EnemyAttackSand : MonoBehaviour
 {
     public enemyMoving em;
     private Transform player;
@@ -50,8 +50,8 @@ public class enemyAttack : MonoBehaviour
 
         if (Vector3.Distance(transform.position, player.position) <= killRange)
         {
-            anim.Play("Attack1");
-            player.GetComponent<playerHealth>().takeDamage();
+            anim.Play("Attack_2");
+            GetComponent<playerHealth>().takeDamage();
             //Debug.Log("omnomnomnom");
         }
 

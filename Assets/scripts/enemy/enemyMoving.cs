@@ -18,12 +18,12 @@ public class enemyMoving : MonoBehaviour
     private float zPos;
 
     public float closeEnough = 2f;
-    private Animation anim;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animation>();
+        anim = GetComponent<Animator>();
         //gives the square of where they can walk
         xMin = -squareOfMovement;
         xMax = squareOfMovement;
