@@ -51,7 +51,7 @@ public class EnemyAttackSand : MonoBehaviour
         if (Vector3.Distance(transform.position, player.position) <= killRange)
         {
             anim.Play("Attack_2");
-            GetComponent<playerHealth>().takeDamage();
+            player.GetComponent<playerHealth>().takeDamage();
             //Debug.Log("omnomnomnom");
         }
 

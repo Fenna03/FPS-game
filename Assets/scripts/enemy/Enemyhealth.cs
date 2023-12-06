@@ -8,17 +8,19 @@ public class Enemyhealth : MonoBehaviour
 {
     public int setHealth = 20;
     private int health;
+
     private int NPCHealth;
     private int NPCHealthMax = 3;
+
     public GameObject Explosion;
-    private Animator anim;
     public GameObject enemy;
+
+    private Animator anim;
 
     //public GameObject healthBarUI;
     //public Slider slider;
 
-
-    private bool hasExploded = false; // Add this flag
+    private bool hasExploded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +42,8 @@ public class Enemyhealth : MonoBehaviour
         // if their health is less than or equal to 0 something happens
         if (health <= 0 && !hasExploded)
         {
-            // gives explosion, don't destroy explosion when enemy dies
-            hasExploded = true; // Set the flag to true to ensure it only happens once
+            // gives explosion
+            hasExploded = true; 
             // destroys enemy when dead
             anim.Play("Death");
             StartCoroutine(Destruction());
