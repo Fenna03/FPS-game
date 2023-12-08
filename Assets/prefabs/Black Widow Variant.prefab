@@ -175,7 +175,7 @@ PrefabInstance:
     - target: {fileID: 8231393546098852387, guid: fd02805ee801de64a828e8190cac7784, type: 3}
       propertyPath: em
       value: 
-      objectReference: {fileID: 7706520514145993645}
+      objectReference: {fileID: 0}
     - target: {fileID: 8349397572283510614, guid: fd02805ee801de64a828e8190cac7784, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -313,6 +313,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8688803186435683820, guid: fd02805ee801de64a828e8190cac7784, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7711215972203066598}
+    - targetCorrespondingSourceObject: {fileID: 8688803186435683820, guid: fd02805ee801de64a828e8190cac7784, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4345451396793725589}
+    - targetCorrespondingSourceObject: {fileID: 8688803186435683820, guid: fd02805ee801de64a828e8190cac7784, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6178970264388480677}
+    - targetCorrespondingSourceObject: {fileID: 8688803186435683820, guid: fd02805ee801de64a828e8190cac7784, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1810189330685564800}
+    - targetCorrespondingSourceObject: {fileID: 8688803186435683820, guid: fd02805ee801de64a828e8190cac7784, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5844854003118630473}
   m_SourcePrefab: {fileID: 100100000, guid: fd02805ee801de64a828e8190cac7784, type: 3}
 --- !u!1 &350655484385740706 stripped
 GameObject:
@@ -348,7 +360,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350655484385740706}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -404,10 +416,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7706520514145993645 stripped
+--- !u!114 &4345451396793725589
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1637652939435930083, guid: fd02805ee801de64a828e8190cac7784, type: 3}
-  m_PrefabInstance: {fileID: 8955710466779066958}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350655484385740706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589e09a28d0615c4c84c05134c3df3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  em: {fileID: 6178970264388480677}
+  attackRange: 15
+  killRange: 3
+--- !u!114 &6178970264388480677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350655484385740706}
   m_Enabled: 1
@@ -415,3 +443,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a6fa82b65a9b44cbe2aedcc5bd76c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  squareOfMovement: 200
+  agent: {fileID: 3875846010819230526}
+  closeEnough: 2
+--- !u!114 &-1810189330685564800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350655484385740706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0d3bd0a41c6ae40a1d6c22d6f1ff0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setHealth: 20
+  Explosion: {fileID: 6052155732330315248, guid: b2548297e2e2f5040919a1d1a8bb6368, type: 3}
+  enemy: {fileID: 350655484385740706}
+--- !u!65 &5844854003118630473
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350655484385740706}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3264287, y: 0.8954468, z: 1.6819698}
+  m_Center: {x: 0.16321433, y: 1.231308, z: -0.34098488}

@@ -14,6 +14,8 @@ public class Enemyhealth : MonoBehaviour
     private int NPCHealth;
     private int NPCHealthMax = 3;
 
+    public Slider healthSlider;
+
     //gameObjects which are needed
     public GameObject Explosion;
     public GameObject enemy;
@@ -30,6 +32,9 @@ public class Enemyhealth : MonoBehaviour
         health = setHealth;
         NPCHealth = NPCHealthMax;
 
+        healthSlider.maxValue = setHealth;
+        UpdateHealthUI();
+
     }
     public void Die()
     {
@@ -43,14 +48,16 @@ public class Enemyhealth : MonoBehaviour
             StartCoroutine(Destruction());
             StartCoroutine(Explosie());
             Debug.Log(health);
+            Destroy(healthSlider);
         }
         else
         {
-            //plays animation
+            //play animation
             anim.Play("TakeDamage.002");
             // health decreases by 1 and shows me how much the health is
             health--;
-            //Debug.Log(health);
+            Debug.Log(health);
+            UpdateHealthUI();
         }
     }
     public void Break()
@@ -80,5 +87,11 @@ public class Enemyhealth : MonoBehaviour
         //after waiting for 0.4 seconds it will give an explosion
         yield return new WaitForSeconds(0.4f);
         Instantiate(Explosion, transform.position, Quaternion.identity);
+    }
+
+    public void UpdateHealthUI()
+    {
+        // Set the current value of the slider to the current health
+        healthSlider.value = health;
     }
 }
