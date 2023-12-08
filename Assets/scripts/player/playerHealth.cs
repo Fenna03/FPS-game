@@ -15,6 +15,8 @@ public class playerHealth : MonoBehaviour
     public WeaponSwitch weaponSwitchScript;
 
     public GameObject healerVial;
+    public GameObject Sparkles;
+
     //public Animator anim;
 
 
@@ -50,6 +52,7 @@ public class playerHealth : MonoBehaviour
                 healthSlider.value = health;
                 Debug.Log("+5 health");
                 GameObject.Find("VaccineVial_Purple").GetComponent<Animator>().Play("Healing");
+                Instantiate(Sparkles, transform.position, Quaternion.identity);
             }
             else if (healAmount <= 0)
             {
