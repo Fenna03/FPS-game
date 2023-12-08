@@ -66,7 +66,7 @@ public class enemyAttack : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             player.GetComponent<playerHealth>().takeDamage();
-            Debug.Log("Die player");
+            //Debug.Log("Die player");
         }
     }
 }

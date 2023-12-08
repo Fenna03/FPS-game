@@ -7,6 +7,7 @@ public class WeaponSwitch : MonoBehaviour
     public int selectedWeapon = 0;
     public int newSelectedWeapon = 0;
 
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -53,11 +54,11 @@ public class WeaponSwitch : MonoBehaviour
         {
             newSelectedWeapon = 2;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 4)
+        if (Input.GetKeyDown(KeyCode.Alpha4) && transform.childCount >= 4)
         {
             newSelectedWeapon = 3;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3) && transform.childCount >= 5)
+        if (Input.GetKeyDown(KeyCode.R) && transform.childCount >= 5)
         {
             newSelectedWeapon = 4;
         }

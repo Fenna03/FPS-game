@@ -6,12 +6,15 @@ using UnityEngine.UI;
 
 public class Enemyhealth : MonoBehaviour
 {
+    //sets enemy health
     public int setHealth = 20;
     private int health;
 
+    //sets block health
     private int NPCHealth;
     private int NPCHealthMax = 3;
 
+    //gameObjects which are needed
     public GameObject Explosion;
     public GameObject enemy;
 
@@ -22,6 +25,7 @@ public class Enemyhealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //gets the animator, and sets health amount for npc and enemy
         anim = GetComponent<Animator>();
         health = setHealth;
         NPCHealth = NPCHealthMax;
@@ -42,10 +46,11 @@ public class Enemyhealth : MonoBehaviour
         }
         else
         {
+            //plays animation
             anim.Play("TakeDamage.002");
             // health decreases by 1 and shows me how much the health is
             health--;
-            Debug.Log(health);
+            //Debug.Log(health);
         }
     }
     public void Break()
@@ -54,23 +59,25 @@ public class Enemyhealth : MonoBehaviour
         {
             // destroys enemy when dead
             Destroy(gameObject);
-            Debug.Log(NPCHealth);
+            //Debug.Log(NPCHealth);
         }
         else
         {
             // health decreases by 1 and shows me how much the health is
             NPCHealth--;
-            Debug.Log(NPCHealth);
+            //Debug.Log(NPCHealth);
         }
     }
     IEnumerator Destruction()
     {
+        //after waiting for 1.4 seconds it will destroy the gameobject
         yield return new WaitForSeconds(1.4f);
         Destroy(gameObject);
     }
 
     IEnumerator Explosie()
     {
+        //after waiting for 0.4 seconds it will give an explosion
         yield return new WaitForSeconds(0.4f);
         Instantiate(Explosion, transform.position, Quaternion.identity);
     }

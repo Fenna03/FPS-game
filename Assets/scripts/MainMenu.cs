@@ -5,12 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-    public void Start()
-    {
-       //GameObject.FindGameObjectWithTag("GameMusic").GetComponent<MusicClass>().PlayMusic();
-    }
-
     //starts gameMode
     public void PlayGame(int gameMode = 1)
     {
@@ -30,6 +24,8 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+
+    //resets game, just starts it again
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

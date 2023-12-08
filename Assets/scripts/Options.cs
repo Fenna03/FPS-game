@@ -8,7 +8,7 @@ public class Options : MonoBehaviour
 {
     public bool pause = true;
     //public byte gameMode;
-
+    //everything for volume and music
     public AudioMixer audioMixer;
     public Slider volumeSlider;
     public void SetVolume(float volume)

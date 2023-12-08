@@ -46,12 +46,14 @@ public class lookingAround : MonoBehaviour
     }
     void UpdateCursorState()
     {
+        //if escape is pressed everything in the game will stop and you will see your cursor
         if (paused)
         {
             Time.timeScale = 0;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+        //everything goes like normal and cursor will become invisible
         else
         {
             Time.timeScale = 1;
@@ -59,7 +61,7 @@ public class lookingAround : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
-
+    //you get the options menu and everything becomes paused
     public void TogglePause()
     {
         optionsMenu.gameObject.SetActive(!optionsMenu.gameObject.activeSelf);

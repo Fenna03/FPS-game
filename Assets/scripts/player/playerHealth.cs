@@ -12,11 +12,17 @@ public class playerHealth : MonoBehaviour
     public int health;
     public float healAmount = 5;
     public float timeBetweenHits = 2f;
+    public WeaponSwitch weaponSwitchScript;
+    public Animator anim;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
+
+        weaponSwitchScript = GameObject.Find("WeaponHolder").GetComponent<WeaponSwitch>();
+        //sets health
         health = maxHealth;
 
         // Ensure healthSlider is assigned
@@ -30,9 +36,10 @@ public class playerHealth : MonoBehaviour
         // Set the initial health value
         healthSlider.value = health;
     }
-    private void Update()
+    public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        //when you press R and you have potions and not full health you can heal +5 health, this will update everything
+        if (Input.GetKeyDown(KeyCode.E) && weaponSwitchScript.newSelectedWeapon == 4)
         {
             if (health <= 49 && healAmount >= 1)
             {
@@ -40,36 +47,36 @@ public class playerHealth : MonoBehaviour
                 health += 5;
                 healthSlider.value = health;
                 Debug.Log("+5 health");
+                anim.Play("healing");
             }
+            //this is shown when you have above 49 health or no health potions anymore
             else
             {
                 Debug.Log("You have enough health or used all your healing potions");
             }
-
         }
     }
     public void takeDamage()
     {
+        //if health is 0 or less than 0 it shows the dead message to try again or quit and you can use your mouse
         if (health <= 0)
         {
-            // Destroys Player when dead
-            // Destroy(gameObject);
             Debug.Log(health);
             Dead.gameObject.SetActive(!Dead.gameObject.activeSelf);
             UpdateCursorState();
         }
+        //if health is more than 0 it will decrease it by 1 and update the health bar
         else
         {
             // Health decreases by 1 and shows how much health is remaining
             health--;
             healthSlider.value = health;
-            Debug.Log(health + " Goddamn you fuckin' assholes");
+            //Debug.Log(health + " Goddamn you fuckin' assholes");
         }
     }
 
     void UpdateCursorState()
     {
-
         Time.timeScale = 1;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
