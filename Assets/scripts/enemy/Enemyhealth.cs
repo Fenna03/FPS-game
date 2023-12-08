@@ -17,9 +17,6 @@ public class Enemyhealth : MonoBehaviour
 
     private Animator anim;
 
-    //public GameObject healthBarUI;
-    //public Slider slider;
-
     private bool hasExploded = false;
 
     // Start is called before the first frame update
@@ -29,16 +26,9 @@ public class Enemyhealth : MonoBehaviour
         health = setHealth;
         NPCHealth = NPCHealthMax;
 
-        //slider.value = calculateHealth();
     }
-
     public void Die()
     {
-        //slider.value = calculateHealth();
-        //if (health < setHealth)
-        //{
-        //    healthBarUI.SetActive(true);
-        //}
         // if their health is less than or equal to 0 something happens
         if (health <= 0 && !hasExploded)
         {
@@ -48,7 +38,6 @@ public class Enemyhealth : MonoBehaviour
             anim.Play("Death");
             StartCoroutine(Destruction());
             StartCoroutine(Explosie());
-
             Debug.Log(health);
         }
         else
@@ -59,7 +48,6 @@ public class Enemyhealth : MonoBehaviour
             Debug.Log(health);
         }
     }
-
     public void Break()
     {
         if (NPCHealth <= 0)
@@ -86,9 +74,4 @@ public class Enemyhealth : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         Instantiate(Explosion, transform.position, Quaternion.identity);
     }
-
-    //float calculateHealth()
-    //{
-    //    return health / setHealth;
-    //}
 }

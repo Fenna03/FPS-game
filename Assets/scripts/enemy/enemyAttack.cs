@@ -11,36 +11,31 @@ public class enemyAttack : MonoBehaviour
     private Renderer rend;
     public float attackRange = 15f;
     public float killRange = 3f;
-    public int attacking = 1;
     private bool foundPlayer;
     private Animator anim;
+    private bool hasAttacked; // Flag to track whether an attack has been initiated
 
     private void Awake()
     {
-
-        //gets player, rendering and moving script
+        // gets player, rendering, and moving script
         em = GetComponent<enemyMoving>();
-        //rend = GetComponent<Renderer>();
+        // rend = GetComponent<Renderer>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponent<Animator>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        hasAttacked = false; // Initialize the flag
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if enemy is close to player, change color, make it go to player, has found player and increase speed
-        if(Vector3.Distance(transform.position, player.position) <= attackRange)
+        // if enemy is close to player, change color, make it go to the player, has found player and increase speed
+        if (Vector3.Distance(transform.position, player.position) <= attackRange)
         {
             em.agent.SetDestination(player.position);
             foundPlayer = true;
             em.agent.speed = 5f;
         }
-        //if they didn't find player keep normal color, go to random location, has not found player and normal speed
+        // if they didn't find the player keep normal color, go to a random location, has not found the player and normal speed
         else if (foundPlayer)
         {
             em.newLocation();
@@ -48,27 +43,31 @@ public class enemyAttack : MonoBehaviour
             em.agent.speed = 5f;
         }
 
+        // Attack the player when within killRange
         if (Vector3.Distance(transform.position, player.position) <= killRange)
         {
-            anim.Play("Attack1");
-            player.GetComponent<playerHealth>().takeDamage();
-            //Debug.Log("omnomnomnom");
+            // Check if an attack has already been initiated
+            if (!hasAttacked)
+            {
+                anim.Play("Attack1");
+                player.GetComponent<playerHealth>().takeDamage();
+                hasAttacked = true; // Set the flag to true to prevent continuous attacks
+            }
         }
-
-
-        //if (Vector3.Distance(transform.position, player.position) <= attacking)
-        //{
-              //GetComponent<playerHealth>().takeDamage();
-              //Debug.Log("Die player");
-        //}
+        else
+        {
+            // Reset the flag when the player is out of killRange
+            hasAttacked = false;
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider col)
     {
-        if(other.tag == "player")
+        if (col.CompareTag("Player"))
         {
-            GetComponent<playerHealth>().takeDamage();
+            player.GetComponent<playerHealth>().takeDamage();
             Debug.Log("Die player");
         }
     }
 }
+
