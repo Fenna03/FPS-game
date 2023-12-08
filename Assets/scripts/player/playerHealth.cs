@@ -13,13 +13,15 @@ public class playerHealth : MonoBehaviour
     public float healAmount = 5;
     public float timeBetweenHits = 2f;
     public WeaponSwitch weaponSwitchScript;
-    public Animator anim;
+
+    public GameObject healerVial;
+    //public Animator anim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
 
         weaponSwitchScript = GameObject.Find("WeaponHolder").GetComponent<WeaponSwitch>();
         //sets health
@@ -47,12 +49,17 @@ public class playerHealth : MonoBehaviour
                 health += 5;
                 healthSlider.value = health;
                 Debug.Log("+5 health");
-                anim.Play("healing");
+                GameObject.Find("VaccineVial_Purple").GetComponent<Animator>().Play("Healing");
+            }
+            else if (healAmount <= 0)
+            {
+                Destroy(healerVial);
+                Debug.Log("You used all healing vials");
             }
             //this is shown when you have above 49 health or no health potions anymore
             else
             {
-                Debug.Log("You have enough health or used all your healing potions");
+                Debug.Log("You have enough health");
             }
         }
     }
