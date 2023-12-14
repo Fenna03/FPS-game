@@ -18,6 +18,9 @@ public class enemyAttack : MonoBehaviour
     private Vector2 playerXZ;
     private Vector2 enemyXZ;
 
+    private float attackTimer;
+    private float attackRate = 1f;
+
     private void Awake()
     {
         // gets player, rendering, and moving script
@@ -32,6 +35,7 @@ public class enemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        attackTimer += Time.deltaTime;
         playerXZ = new Vector2(player.transform.position.x, player.transform.position.z);
         enemyXZ = new Vector2(transform.position.x, transform.position.z);
         
@@ -57,19 +61,13 @@ public class enemyAttack : MonoBehaviour
         {
             //Debug.Log("Ya very close to player");
             // Check if an attack has already been initiated
-            if (!hasAttacked)
+            if (attackTimer > attackRate)
             {
-                anim.Play("Attack1");
-                player.GetComponent<playerHealth>().takeDamage();
-                hasAttacked = true; // Set the flag to true to prevent continuous attacks
+                anim.Play("Attack1"); //plays attack
+                player.GetComponent<playerHealth>().takeDamage(); //gets the health from player to do damage
+                attackTimer = 0; //resets timer
                 //Debug.Log("Ya attacked bitch");
             }
-        }
-        else if (hasAttacked)
-        {
-            // Reset the flag when the player is out of killRange
-            hasAttacked = false;
-            //Debug.Log("Ya cannot attack bithc");
         }
     }
 

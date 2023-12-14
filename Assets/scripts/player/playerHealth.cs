@@ -30,7 +30,7 @@ public class playerHealth : MonoBehaviour
         health = maxHealth;
 
         // Ensure healthSlider is assigned
-        if (healthSlider == null)
+        if (healthSlider   == null)
         {
             Debug.LogError("Health Slider is not assigned to the PlayerHealthUI script!");
         }
