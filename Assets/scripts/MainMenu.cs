@@ -16,6 +16,10 @@ public class MainMenu : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
+        if (gameMode == 2)
+        {
+            SceneManager.LoadScene("NoNoSpider");
+        }
     }
 
     //quits gameMode
