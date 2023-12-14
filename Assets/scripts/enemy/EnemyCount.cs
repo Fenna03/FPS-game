@@ -20,7 +20,7 @@ public class EnemyCount : MonoBehaviour
         //if there are no enemies show the won screen and mouse will be visible
         if (enemyCount == 0)
         {
-            Won.gameObject.SetActive(!Won.gameObject.activeSelf);
+            Won.gameObject.SetActive(true);
             UpdateCursorState();
         }
 

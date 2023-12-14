@@ -857,10 +857,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab679c00518dc24f90eaac51ca17be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  optionsMenu: {fileID: 0}
   player: {fileID: 1319826302}
-  xMouse: 0
   lookSpeed: 3
   speed: 100
+  xMouse: 0
+  paused: 0
 --- !u!1 &1042213961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,8 +1261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 963194227}
-  enemy: {fileID: 8914612325794163638, guid: 1c7b96296460a9f40b0a2ca30fe0ad08, type: 3}
-  NPC: {fileID: 6563132128900460860, guid: e2f0a57039a3acf4ebd38468ca353aa4, type: 3}
 --- !u!1 &1565462540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d1f876e5a175449a9992d5250d3c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OGenemy: {fileID: 8914612325794163638, guid: 1c7b96296460a9f40b0a2ca30fe0ad08, type: 3}
+  OGenemy: {fileID: 2319970368052321992, guid: 78cf4993443a8824bab345a384b2ed12, type: 3}
   enemyMax: 2
 --- !u!4 &1590716788 stripped
 Transform:
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 8cbe917804c050f4aaef8d843d5f2281, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 6bee5a5b7d42b0f4592505ed5ae9c207, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1001 &1952637754
 PrefabInstance:

@@ -72,7 +72,7 @@ public class playerHealth : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log(health);
-            Dead.gameObject.SetActive(!Dead.gameObject.activeSelf);
+            Dead.gameObject.SetActive(true);
             UpdateCursorState();
         }
         //if health is more than 0 it will decrease it by 1 and update the health bar

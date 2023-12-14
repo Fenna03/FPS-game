@@ -146,9 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   em: {fileID: 1683302928951761948}
-  defaultMat: {fileID: 2100000, guid: da4b764f3873d6c4db764d2033f35582, type: 2}
-  attackMat: {fileID: 2100000, guid: fb7e5dd3017e7af4485a47e84d4a330c, type: 2}
   attackRange: 10
+  killRange: 3
 --- !u!114 &1683302928951761948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,4 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setHealth: 10
+  healthSlider: {fileID: 0}
   Explosion: {fileID: 4695087804232688647, guid: a1f0cdd5667f25c47937f15a00cbed83, type: 3}
+  enemy: {fileID: 8914612325794163638}

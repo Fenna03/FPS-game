@@ -9,19 +9,20 @@ public class Enemyhealth : MonoBehaviour
     //sets enemy health
     public int setHealth = 20;
     private int health;
+    public Slider healthSlider;
 
     //sets block health
     private int NPCHealth;
     private int NPCHealthMax = 3;
 
-    public Slider healthSlider;
-
     //gameObjects which are needed
     public GameObject Explosion;
     public GameObject enemy;
 
+    //so animations play
     private Animator anim;
 
+    //booleans
     private bool hasExploded = false;
 
     // Start is called before the first frame update
@@ -32,9 +33,10 @@ public class Enemyhealth : MonoBehaviour
         health = setHealth;
         NPCHealth = NPCHealthMax;
 
+        // Set the max value of the health slider
         healthSlider.maxValue = setHealth;
-        UpdateHealthUI();
-
+        // Set the initial health value
+        healthSlider.value = health;
     }
     public void Die()
     {
@@ -48,7 +50,6 @@ public class Enemyhealth : MonoBehaviour
             StartCoroutine(Destruction());
             StartCoroutine(Explosie());
             Debug.Log(health);
-            Destroy(healthSlider);
         }
         else
         {
@@ -57,7 +58,7 @@ public class Enemyhealth : MonoBehaviour
             // health decreases by 1 and shows me how much the health is
             health--;
             Debug.Log(health);
-            UpdateHealthUI();
+            healthSlider.value = health;
         }
     }
     public void Break()
@@ -67,12 +68,14 @@ public class Enemyhealth : MonoBehaviour
             // destroys enemy when dead
             Destroy(gameObject);
             //Debug.Log(NPCHealth);
+            
         }
         else
         {
             // health decreases by 1 and shows me how much the health is
             NPCHealth--;
             //Debug.Log(NPCHealth);
+            
         }
     }
     IEnumerator Destruction()
@@ -87,11 +90,5 @@ public class Enemyhealth : MonoBehaviour
         //after waiting for 0.4 seconds it will give an explosion
         yield return new WaitForSeconds(0.4f);
         Instantiate(Explosion, transform.position, Quaternion.identity);
-    }
-
-    public void UpdateHealthUI()
-    {
-        // Set the current value of the slider to the current health
-        healthSlider.value = health;
     }
 }
