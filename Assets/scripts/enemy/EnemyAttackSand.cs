@@ -18,6 +18,9 @@ public class EnemyAttackSand : MonoBehaviour
     private Vector2 playerXZ;
     private Vector2 enemyXZ;
 
+    private float attackTimer;
+    private float attackRate = 1f;
+
     private void Awake()
     {
         // gets player, rendering, and moving script
@@ -32,6 +35,7 @@ public class EnemyAttackSand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        attackTimer += Time.deltaTime;
         playerXZ = new Vector2(player.transform.position.x, player.transform.position.z);
         enemyXZ = new Vector2(transform.position.x, transform.position.z);
 
@@ -44,12 +48,12 @@ public class EnemyAttackSand : MonoBehaviour
             //Debug.Log("Ya found the player");
         }
         // if they didn't find the player go to a random location, has not found the player and normal speed
-        else if (!foundPlayer)
+        else if (foundPlayer)
         {
             em.newLocation();
             foundPlayer = false;
             em.agent.speed = 5f;
-            //Debug.Log("Ya lost the player");
+            Debug.Log("Ya lost the player");
         }
 
         // Attack the player when within killRange
@@ -57,19 +61,13 @@ public class EnemyAttackSand : MonoBehaviour
         {
             //Debug.Log("Ya very close to player");
             // Check if an attack has already been initiated
-            if (!hasAttacked)
+            if (attackTimer > attackRate)
             {
-                anim.Play("Attack_2");
-                player.GetComponent<playerHealth>().takeDamage();
-                hasAttacked = true; // Set the flag to true to prevent continuous attacks
+                anim.Play("Attack_2"); //plays attack
+                player.GetComponent<playerHealth>().takeDamage(); //gets the health from player to do damage
+                attackTimer = 0; //resets timer
                 //Debug.Log("Ya attacked bitch");
             }
-        }
-        else
-        {
-            // Reset the flag when the player is out of killRange
-            hasAttacked = false;
-            //Debug.Log("Ya cannot attack bithc");
         }
     }
 
